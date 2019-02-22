@@ -3,8 +3,7 @@ import { ConfigService } from './config/config.service';
 
 @Injectable()
 export class AppService {
-  constructor(private config: ConfigService) {
-  }
+  constructor(private config: ConfigService) {}
 
   getHello(): string {
     return this.config.messenger.apiKey;
