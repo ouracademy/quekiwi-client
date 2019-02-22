@@ -8,5 +8,6 @@ import { MessengerModule } from './messenger/messenger.module';
   imports: [ConfigModule, MessengerModule],
   controllers: [AppController],
   providers: [AppService],
+  exports: [ConfigModule],
 })
 export class AppModule {}

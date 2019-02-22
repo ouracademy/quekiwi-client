@@ -1,9 +1,9 @@
-import { Controller, Get, Query, Response, Logger } from '@nestjs/common';
+import { Controller, Get, Query, Response } from '@nestjs/common';
 import { ConfigService } from '../config/config.service';
 
 @Controller('webhook')
 export class MessengerController {
-  constructor(private config: ConfigService, private logger: Logger) {}
+  constructor(private config: ConfigService) {}
 
   @Get()
   verify(@Query() query: any, @Response() res): any {
@@ -16,7 +16,7 @@ export class MessengerController {
     if (mode && token) {
       // Checks the mode and token sent is correct
       if (mode === 'subscribe' && token === VERIFY_TOKEN) {
-        this.logger.log('WEBHOOK_VERIFIED');
+        // console.log('WEBHOOK_VERIFIED');
         res.status(200).send(challenge);
       } else {
         res.sendStatus(403);
